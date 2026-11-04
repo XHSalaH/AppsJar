@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AppsJar — Le bocal à applications</title>
+  <link rel="icon" href="assets/logo-j.jpg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ================= TOP BAR ================= -->
+  <header class="topbar">
+    <button class="burger" id="burger" aria-label="Menu">
+      <svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+    </button>
+
+    <a class="brand" href="#" data-nav="overview">
+      <span class="brand-logo"><img src="assets/logo-j.jpg" alt="Logo J" /></span>
+      <span class="brand-name">AppsJar</span>
+      <span class="brand-badge">MAROC</span>
+    </a>
+
+    <nav class="topnav">
+      <a href="#" class="active" data-nav="overview">Explorer</a>
+      <a href="#" data-open="about">À propos</a>
+    </nav>
+
+    <label class="search">
+      <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input id="search" type="search" placeholder="Rechercher une application, un outil, un site d'aide…" autocomplete="off" />
+      <kbd>Ctrl K</kbd>
+    </label>
+
+    <a class="top-btn" href="https://github.com/XHSalaH/AppsJar" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24"><path d="M9 19c-4 1.5-4-2-6-2.5m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg>
+      GitHub
+    </a>
+
+    <a class="learnpls" href="#" data-open="about" title="about LearnPls">
+      <img src="assets/logo-lplus.png" alt="Logo L+" />
+      <span><b>+ about LearnPls</b><small>By salaheddine</small></span>
+    </a>
+  </header>
+
+  <div class="layout">
+
+    <!-- ================= SIDEBAR ================= -->
+    <aside class="sidebar" id="sidebar">
+      <div class="side-title">NAVIGATION</div>
+      <a href="#" class="side-link" data-nav="overview">
+        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+        Vue d'ensemble <span class="pill">Live</span>
+      </a>
+      <a href="#" class="side-link" data-nav="new">
+        <svg viewBox="0 0 24 24"><path d="m3 17 6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg>
+        Nouveautés 2026 <span class="pill pill-blue" id="count-new">+0 màj</span>
+      </a>
+
+      <div class="side-title">CATÉGORIES <span id="count-cats">3 catégories</span></div>
+      <div id="side-cats"></div>
+
+      <div class="side-title">ESPACE PERSONNEL</div>
+      <a href="#" class="side-link" data-nav="favs">
+        <svg viewBox="0 0 24 24"><path d="M6 3h12v18l-6-4-6 4z"/></svg>
+        Favoris &amp; Sauvegardes <span class="num" id="count-favs">0</span>
+      </a>
+      <a href="#" class="side-link" data-nav="history">
+        <svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/><path d="M12 7v5l3 3"/></svg>
+        Historique <span class="num" id="count-hist">0</span>
+      </a>
+
+      <div class="side-foot">
+        <img src="assets/logo-lplus.png" alt="" />
+        <div><b>LearnPls</b><small>AppsJar · 2026</small></div>
+      </div>
+    </aside>
+
+    <!-- ================= MAIN ================= -->
+    <main class="main">
+
+      <!-- HERO -->
+      <section class="hero">
+        <div class="hero-text">
+          <div class="chips">
+            <span class="chip chip-live"><i></i><span id="hero-count">0</span> Applications aujourd'hui</span>
+            <span class="chip chip-soft"><i></i>En développement continu</span>
+          </div>
+          <h1>Bienvenue sur AppsJar, le bocal à applications des professionnels</h1>
+          <p>Toutes mes applications web réunies au même endroit : outils de métier, outils de design et
+             sites d'aide. Ouvrez-les en un clic, en tuiles façon <b>Windows 8</b> ou en diaporama plein écran.</p>
+          <div class="hero-actions">
+            <a href="#catalogue" class="btn btn-primary">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m15.5 8.5-2 5-5 2 2-5z"/></svg>
+              Explorer le catalogue
+            </a>
+            <button class="btn btn-ghost" id="hero-slideshow">
+              <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/><path d="m10 8.5 4 2-4 2z"/></svg>
+              Lancer le diaporama
+            </button>
+            <button class="btn btn-mono" data-nav="aide">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg>
+              Sites d'aide !!
+            </button>
+          </div>
+        </div>
+        <div class="hero-card">
+          <div class="hc-head"><span>APPLICATIONS PERSONNELLES</span><b id="hc-pct">0%</b></div>
+          <div class="hc-bar"><i id="hc-bar"></i></div>
+          <div class="hc-big" id="hc-text">—</div>
+          <div class="hc-mini" id="hc-mini"></div>
+        </div>
+      </section>
+
+      <!-- FILTER TABS -->
+      <section class="tabs" id="catalogue">
+        <div class="tab-row" id="tab-row"></div>
+        <div class="tab-info">
+          Affichage de <b id="shown">0</b> élément(s)
+          <span class="sep">|</span>
+          <a href="#" id="reset">
+            <svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg>
+            Réinitialiser
+          </a>
+        </div>
+      </section>
+
+      <!-- SECTION HEADER -->
+      <section class="sec-head">
+        <h2><i class="bar"></i><span id="sec-title">Toutes les catégories · Tout</span></h2>
+        <span class="chip chip-outline">Sélection actuelle</span>
+        <div class="grow"></div>
+
+        <div class="viewswitch" role="tablist" aria-label="Vue">
+          <button data-view="metro" class="on" title="Tuiles Windows 8">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="11" height="11"/><rect x="16" y="3" width="5" height="5"/><rect x="16" y="9" width="5" height="5"/><rect x="3" y="16" width="5" height="5"/><rect x="9" y="16" width="12" height="5"/></svg>
+            Tuiles
+          </button>
+          <button data-view="cards" title="Cartes">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="3" width="8" height="8" rx="1.5"/><rect x="3" y="13" width="8" height="8" rx="1.5"/><rect x="13" y="13" width="8" height="8" rx="1.5"/></svg>
+            Cartes
+          </button>
+          <button data-view="list" title="Liste">
+            <svg viewBox="0 0 24 24"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg>
+            Liste
+          </button>
+        </div>
+
+        <label class="sort">Trié par :
+          <select id="sort">
+            <option value="cat">Pertinence (par catégorie)</option>
+            <option value="az">Nom (A → Z)</option>
+            <option value="new">Nouveautés d'abord</option>
+          </select>
+        </label>
+      </section>
+
+      <!-- GRID -->
+      <section id="grid" class="grid view-metro"></section>
+      <div class="empty" id="empty" hidden>
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <p>Aucune application ne correspond à votre recherche.</p>
+      </div>
+
+      <footer class="foot">
+        <span>© 2026 AppsJar · LearnPls by salaheddine</span>
+        <a href="https://github.com/XHSalaH/AppsJar" target="_blank" rel="noopener">github.com/XHSalaH/AppsJar</a>
+      </footer>
+    </main>
+  </div>
+
+  <!-- ================= SLIDESHOW / VIEWER ================= -->
+  <div class="viewer" id="viewer" hidden>
+    <div class="v-top">
+      <div class="v-title">
+        <span class="v-dot" id="v-dot"></span>
+        <div><b id="v-name">—</b><small id="v-cat">—</small></div>
+      </div>
+      <div class="v-count" id="v-count">1 / 1</div>
+      <div class="v-actions">
+        <button id="v-fav" class="v-btn" title="Favori">
+          <svg viewBox="0 0 24 24"><path d="M6 3h12v18l-6-4-6 4z"/></svg>
+        </button>
+        <a id="v-open" class="v-btn v-btn-primary" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9M19 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h5"/></svg>
+          Ouvrir
+        </a>
+        <button id="v-close" class="v-btn" title="Fermer (Échap)">
+          <svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg>
+        </button>
+      </div>
+    </div>
+    <div class="v-stage">
+      <button class="v-nav v-prev" id="v-prev" title="Précédent (←)"><svg viewBox="0 0 24 24"><path d="m15 6-6 6 6 6"/></svg></button>
+      <div class="v-frame">
+        <iframe id="v-iframe" title="Aperçu" loading="lazy"></iframe>
+        <div class="v-blocked" id="v-blocked" hidden>
+          <div class="v-blocked-ico" id="v-blocked-ico"></div>
+          <h3 id="v-blocked-name"></h3>
+          <p id="v-blocked-desc"></p>
+          <a id="v-blocked-open" class="btn btn-primary" target="_blank" rel="noopener">Ouvrir dans un nouvel onglet</a>
+        </div>
+      </div>
+      <button class="v-nav v-next" id="v-next" title="Suivant (→)"><svg viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg></button>
+    </div>
+    <div class="v-strip" id="v-strip"></div>
+  </div>
+
+  <!-- ================= ABOUT ================= -->
+  <div class="modal" id="about" hidden>
+    <div class="modal-card">
+      <button class="modal-x" data-close>
+        <svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg>
+      </button>
+      <div class="about-logos">
+        <img src="assets/logo-j.jpg" alt="Logo AppsJar" class="about-j" />
+        <img src="assets/logo-lplus.png" alt="Logo LearnPls" class="about-l" />
+      </div>
+      <h2>À propos d'AppsJar</h2>
+      <p><b>AppsJar</b> (le « bocal à applications ») rassemble les applications web développées par
+        <b>salaheddine</b> dans le cadre de l'initiative <b>LearnPls</b> : des outils simples, gratuits et
+        directement utilisables dans le navigateur pour gagner du temps au quotidien.</p>
+      <ul class="about-list">
+        <li><b>Outils de métier</b> — métrés, planification Gantt, traitement de PDF.</li>
+        <li><b>Outils designs</b> — intercalaires, tableau blanc.</li>
+        <li><b>Sites et logiciel d'aide</b> — une sélection de ressources utiles.</li>
+      </ul>
+      <div class="about-actions">
+        <a class="btn btn-primary" href="https://github.com/XHSalaH/AppsJar" target="_blank" rel="noopener">Voir le dépôt GitHub</a>
+        <button class="btn btn-ghost" data-close>Fermer</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
